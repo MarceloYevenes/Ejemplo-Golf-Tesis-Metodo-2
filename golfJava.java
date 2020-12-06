@@ -57,9 +57,13 @@ public class golfJava {
         System.out.printf("La probabilida actual que NO se juege es: %f \n", probabilidadNoJugar);
 
         
-        // Calculo de matrices de frecuencia para si y no
+        // matrices de frecuencia para si y no
         double[][] matrizFrecuenciaSi = new double[3][4];
         double[][] matrizFrecuenciaNo = new double[3][4];
+
+        //matrices de probabilidad
+        double[][] matrizProbabilidadSi = new double[3][4];
+        double[][] matrizProbabilidadNo = new double[3][4];
 
         //Se llenan ambas matrices con 0 para evitar espacion con valores no definidos
         for(i=0; i<3; i++ ){
@@ -317,13 +321,40 @@ public class golfJava {
         }
 
 
-        //Se debe obtener la suma de las columnas de ambas matrices para
-        //obtener la probabilidades respectivas para cada evento
+        /*Se debe obtener la suma de una columna de ambas matrices para
+        obtener la probabilidades respectivas para cada evento*/
+
+        double sumColMatrizSi = sumColumnas(matrizFrecuenciaSi);  
+        double sumColMatrizNo = sumColumnas(matrizFrecuenciaNo);
+
+        //Matriz de probabilida para si
+        System.out.println("Matriz de probabilidad para si se juega");
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                matrizProbabilidadSi[i][j] = (matrizFrecuenciaSi[i][j])/(sumColMatrizSi);
+               System.out.printf("%f ", matrizProbabilidadSi[i][j]);
+            }
+            System.out.print("\n");
+        }
+
+
+        //Matriz de probabilida para no
+        System.out.println("Matriz de probabilidad para no se juega");
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                matrizProbabilidadNo[i][j] = (matrizFrecuenciaNo[i][j])/(sumColMatrizNo);
+               System.out.printf("%f ", matrizProbabilidadNo[i][j]);
+            }
+            System.out.print("\n");
+        }
+
         
 
 
 
     }
+
+
 
     // Funcion que calcula la cantidad de partidos jugados
     public static int calcularJugados(int[][] matrizDatos) {
@@ -346,6 +377,18 @@ public class golfJava {
             }
         }
         return false;
+    }
+
+    public static double sumColumnas(double[][] matrizObjetivo){
+
+        int row;
+        double total=0.0;
+        for(row = 0; row < matrizObjetivo.length; row++){
+            total+=matrizObjetivo[row][0]; 
+        }
+
+        return total;
+
     }
 
 
