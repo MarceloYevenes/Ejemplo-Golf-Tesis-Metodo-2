@@ -290,7 +290,16 @@ public class golfJava {
 
         /*Comprobar si las matrices tienen algun valor 0
         en caso que alguna tenga un valor 0 se debe normalizar la matriz*/
+        Boolean valorCeroSiJuega = encontrarValorCero(matrizFrecuenciaSi);
+        Boolean valorCeroNoJuega = encontrarValorCero(matrizFrecuenciaNo);
 
+        if(valorCeroSiJuega){
+            System.out.print("Encontro un 0 en si se juega \n");
+        }
+
+        if(valorCeroNoJuega){
+            System.out.print("Encontro un 0 en no se juega \n");
+        }
 
 
     }
@@ -308,15 +317,14 @@ public class golfJava {
 
     public static boolean encontrarValorCero(double[][] matrizObjetivo){
         int row, colum;
-
         for(row = 0;row < matrizObjetivo.length; row++ ){
             for(colum = 0;colum < matrizObjetivo[row].length; colum++){
-                
+                if(matrizObjetivo[row][colum]==0){
+                    return true;
+                }
             }
         }
-        
         return false;
-
     }
 
 
