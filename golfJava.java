@@ -292,14 +292,35 @@ public class golfJava {
         en caso que alguna tenga un valor 0 se debe normalizar la matriz*/
         Boolean valorCeroSiJuega = encontrarValorCero(matrizFrecuenciaSi);
         Boolean valorCeroNoJuega = encontrarValorCero(matrizFrecuenciaNo);
-
+        
+        //Se deben normalizar las matrices de frecuencia si se encuentra un 0;
         if(valorCeroSiJuega){
-            System.out.print("Encontro un 0 en si se juega \n");
+            System.out.println("Matriz normalizada para si se juega");
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 4; j++) {
+                   matrizFrecuenciaSi[i][j]+=1;
+                   System.out.printf("%f ", matrizFrecuenciaSi[i][j]);
+                }
+                System.out.print("\n");
+            }
         }
 
         if(valorCeroNoJuega){
-            System.out.print("Encontro un 0 en no se juega \n");
+            System.out.println("Matriz normalizada para no se juega");
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 4; j++) {
+                    matrizFrecuenciaNo[i][j]+=1;
+                   System.out.printf("%f ", matrizFrecuenciaNo[i][j]);
+                }
+                System.out.print("\n");
+            }
         }
+
+
+        //Se debe obtener la suma de las columnas de ambas matrices para
+        //obtener la probabilidades respectivas para cada evento
+        
+
 
 
     }
