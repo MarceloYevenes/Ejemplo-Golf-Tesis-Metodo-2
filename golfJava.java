@@ -56,13 +56,18 @@ public class golfJava {
         System.out.printf("La probabilida actual que se juege es: %f \n", probabilidadJugar);
         System.out.printf("La probabilida actual que NO se juege es: %f \n", probabilidadNoJugar);
 
-        /* 
+        
         // Calculo de matrices de frecuencia para si y no
+        double[][] matrizFrecuenciaSi = new double[3][4];
+        double[][] matrizFrecuenciaNo = new double[3][4];
 
-        double[][] matrizFrecuenciaCielo = new double[3][2];
-        double[][] matrizFrecuenciaHumendad = new double[2][2];
-        double[][] matrizFrecuenciaTemperatura = new double[3][2];
-        double[][] matrizFrecuenciaViento = new double[2][2];
+        //Se llenan ambas matrices con 0 para evitar espacion con valores no definidos
+        for(i=0; i<3; i++ ){
+            for (j=0;j<4;j++){
+                matrizFrecuenciaSi[i][j] = 0.0;
+                matrizFrecuenciaNo[i][j] = 0.0;
+            }
+        }
 
         // Cielo - Si se juega
         double contadorSoleadoSi = 0.0;
@@ -100,112 +105,126 @@ public class golfJava {
         double contadorNoHayVientoSi = 0.0;
         double contadorNoHayVientoNo = 0.0;
 
+        
         for (i = 0; i < matrizValores.length; i++) {
 
             // -----Cielo-----
+
             // Soleado - Si se juega
-            if (matrizValores[i][0].equals("Soleado") && matrizValores[i][4].equals("Si")) {
+            if (matrizValores[i][0] == (1) && matrizValores[i][4] == (1)) {
                 contadorSoleadoSi++;
             }
 
-            // Soleado - No se juega
-            if (matrizValores[i][0].equals("Soleado") && matrizValores[i][4].equals("No")) {
-                contadorSoleadoNo++;
-            }
-
             // Nublado - Si se juega
-            if (matrizValores[i][0].equals("Nublado") && matrizValores[i][4].equals("Si")) {
+            if (matrizValores[i][0] == (2) && matrizValores[i][4] == (1)) {
                 contadorNubladoSi++;
             }
 
-            // Nublado - No se juega
-            if (matrizValores[i][0].equals("Nublado") && matrizValores[i][4].equals("No")) {
-                contadorNubladoNo++;
-            }
-
             // Lluvia - Si se juega
-            if (matrizValores[i][0].equals("Lluvia") && matrizValores[i][4].equals("Si")) {
+            if (matrizValores[i][0] == (3) && matrizValores[i][4] == (1)) {
                 contadorLluviosSi++;
             }
 
-            // Lluvia - No se juega
-            if (matrizValores[i][0].equals("Lluvia") && matrizValores[i][4].equals("No")) {
-                contadorLluviosNo++;
-            }
 
             // -----Temperatura-----
 
             // Calor - Si se juega
-            if (matrizValores[i][1].equals("Calor") && matrizValores[i][4].equals("Si")) {
+            if (matrizValores[i][1] == (1) && matrizValores[i][4] == (1)) {
                 contadorCalorSi++;
             }
 
-            // Calor - No se juega
-            if (matrizValores[i][1].equals("Calor") && matrizValores[i][4].equals("No")) {
-                contadorCalorNo++;
-            }
-
-            // Templado - Si se juega
-            if (matrizValores[i][1].equals("Templado") && matrizValores[i][4].equals("Si")) {
+             // Templado - Si se juega
+             if (matrizValores[i][1] == (2) && matrizValores[i][4] == (1)) {
                 contadorTempladoSi++;
             }
 
-            // Templado - No se juega
-            if (matrizValores[i][1].equals("Templado") && matrizValores[i][4].equals("No")) {
-                contadorTempladoNo++;
-            }
-
-            // Frio - Si se juega
-            if (matrizValores[i][1].equals("Frío") && matrizValores[i][4].equals("Si")) {
+             // Frio - Si se juega
+             if (matrizValores[i][1] == (3) && matrizValores[i][4] == (1)) {
                 contadorFrioSi++;
-            }
-
-            // Frio - No se juega
-            if (matrizValores[i][1].equals("Frío") && matrizValores[i][4].equals("No")) {
-                contadorFrioNo++;
             }
 
             // -----Humedad-----
 
             // Alta - Si se juega
-            if (matrizValores[i][2].equals("Alta") && matrizValores[i][4].equals("Si")) {
+            if (matrizValores[i][2] == (1) && matrizValores[i][4] == (1)) {
                 contadorAltaSi++;
             }
 
+            // Normal - Si se juega
+            if (matrizValores[i][2] == (2) && matrizValores[i][4] == (1)) {
+                contadorNormalSi++;
+            }
+            
+            // -----Viento-----
+
+            // Si hay viento - Si se juega
+            if (matrizValores[i][3] == (1) && matrizValores[i][4] == (1)) {
+                contadorHayVientoSi++;
+            }
+
+            // No hay viento - Si se juega
+            if (matrizValores[i][3] == (2) && matrizValores[i][4] == (1)) {
+                contadorNoHayVientoSi++;
+            }
+
+            
+            // -----Cielo-----
+
+            // Soleado - No se juega
+            if (matrizValores[i][0] == (1) && matrizValores[i][4] == (2)) {
+                contadorSoleadoNo++;
+            }
+
+            
+            // Nublado - No se juega
+            if (matrizValores[i][0] == (2) && matrizValores[i][4] == (2)) {
+                contadorNubladoNo++;
+            }
+
+            // Lluvia - No se juega
+            if (matrizValores[i][0] == (3) && matrizValores[i][4] == (2)) {
+                contadorLluviosNo++;
+            }
+
+            // -----Temperatura-----
+
+            
+            // Calor - No se juega
+            if (matrizValores[i][1] == (1) && matrizValores[i][4] == (2)) {
+                contadorCalorNo++;
+            }
+
+            // Templado - No se juega
+            if (matrizValores[i][1] == (2) && matrizValores[i][4] == (2)) {
+                contadorTempladoNo++;
+            }
+
+            // Frio - No se juega
+            if (matrizValores[i][1] == (3) && matrizValores[i][4] == (2)) {
+                contadorFrioNo++;
+            }
+
+            // -----Humedad-----
+
             // Alta - No se juega
-            if (matrizValores[i][2].equals("Alta") && matrizValores[i][4].equals("No")) {
+            if (matrizValores[i][2] == (1) && matrizValores[i][4] == (2)) {
                 contadorAltaNo++;
             }
 
-            // Normal - Si se juega
-            if (matrizValores[i][2].equals("Normal") && matrizValores[i][4].equals("Si")) {
-                contadorNormalSi++;
-            }
-
             // Normal - No se juega
-            if (matrizValores[i][2].equals("Normal") && matrizValores[i][4].equals("No")) {
+            if (matrizValores[i][2] == (2) && matrizValores[i][4] == (2)) {
                 contadorNormalNo++;
             }
 
             // -----Viento-----
 
-            // Si hay viento - Si se juega
-            if (matrizValores[i][3].equals("Si") && matrizValores[i][4].equals("Si")) {
-                contadorHayVientoSi++;
-            }
-
             // Si hay viento - No se juega
-            if (matrizValores[i][3].equals("Si") && matrizValores[i][4].equals("No")) {
+            if (matrizValores[i][3] == (1) && matrizValores[i][4] == (2)) {
                 contadorHayVientoNo++;
             }
 
-            // No hay viento - Si se juega
-            if (matrizValores[i][3].equals("No") && matrizValores[i][4].equals("Si")) {
-                contadorNoHayVientoSi++;
-            }
-
             // No hay viento - No se juega
-            if (matrizValores[i][3].equals("No") && matrizValores[i][4].equals("No")) {
+            if (matrizValores[i][3] == (2) && matrizValores[i][4] == (2)) {
                 contadorNoHayVientoNo++;
             }
 
@@ -213,100 +232,64 @@ public class golfJava {
 
         // -----Se llenan de datos las matrices de frecuencia-----
 
-        // -----Cielo-----
-        System.out.println(contadorSoleadoNo);
+        // -----Si se juega-----
+    
+        //Cielo
+        matrizFrecuenciaSi[0][0] = contadorSoleadoSi; 
+        matrizFrecuenciaSi[1][0] = contadorNubladoSi; 
+        matrizFrecuenciaSi[2][0] = contadorLluviosSi; 
 
-        matrizFrecuenciaCielo[0][0] = contadorSoleadoSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaCielo[1][0] = contadorNubladoSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaCielo[2][0] = contadorLluviosSi / Double.valueOf(cantidadSi);
+        //Temperatura
+        matrizFrecuenciaSi[0][1] = contadorCalorSi; 
+        matrizFrecuenciaSi[1][1] = contadorTempladoSi; 
+        matrizFrecuenciaSi[2][1] = contadorFrioSi; 
 
-        matrizFrecuenciaCielo[0][1] = contadorSoleadoNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaCielo[1][1] = contadorNubladoNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaCielo[2][1] = contadorLluviosNo / Double.valueOf(cantidadNo);
+        //Humedad
+        matrizFrecuenciaSi[0][2] = contadorAltaSi; 
+        matrizFrecuenciaSi[1][2] = contadorNormalSi; 
 
-        // Se muestra la tabla de frecuencia de cielo
+        //Viento
+        matrizFrecuenciaSi[0][3] = contadorHayVientoSi; 
+        matrizFrecuenciaSi[1][3] = contadorNoHayVientoSi; 
 
-        System.out.println("Tabla de frecuencia de cielo:");
+        System.out.println("Tabla de frecuencia de si se juega:");
         for (i = 0; i < 3; i++) {
-            for (j = 0; j < 2; j++) {
-                System.out.printf("%f ", matrizFrecuenciaCielo[i][j]);
+            for (j = 0; j < 4; j++) {
+                System.out.printf("%f ", matrizFrecuenciaSi[i][j]);
             }
             System.out.print("\n");
         }
 
-        matrizFrecuenciaTemperatura[0][0] = contadorCalorSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaTemperatura[1][0] = contadorTempladoSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaTemperatura[2][0] = contadorFrioSi / Double.valueOf(cantidadSi);
-
-        matrizFrecuenciaTemperatura[0][1] = contadorCalorNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaTemperatura[1][1] = contadorTempladoNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaTemperatura[2][1] = contadorFrioNo / Double.valueOf(cantidadNo);
-
-        // -----Temperatura-----
-        System.out.println("Tabla de frecuencia de temperatura:");
-        for (i = 0; i < 3; i++) {
-            for (j = 0; j < 2; j++) {
-                System.out.printf("%f ", matrizFrecuenciaTemperatura[i][j]);
-            }
-            System.out.print("\n");
-        }
-
-        // -----Humedad-----
-
-        matrizFrecuenciaHumendad[0][0] = contadorAltaSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaHumendad[1][0] = contadorNormalSi / Double.valueOf(cantidadSi);
-
-        matrizFrecuenciaHumendad[0][1] = contadorAltaNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaHumendad[1][1] = contadorNormalNo / Double.valueOf(cantidadNo);
-
-        System.out.println("Tabla de frecuencia de humedad:");
-        for (i = 0; i < 2; i++) {
-            for (j = 0; j < 2; j++) {
-                System.out.printf("%f ", matrizFrecuenciaHumendad[i][j]);
-            }
-            System.out.print("\n");
-        }
-
-        // -----Viento-----
-        matrizFrecuenciaViento[0][0] = contadorHayVientoSi / Double.valueOf(cantidadSi);
-        matrizFrecuenciaViento[1][0] = contadorNoHayVientoSi / Double.valueOf(cantidadSi);
-
-        matrizFrecuenciaViento[0][1] = contadorHayVientoNo / Double.valueOf(cantidadNo);
-        matrizFrecuenciaViento[1][1] = contadorNoHayVientoNo / Double.valueOf(cantidadNo);
-
-        System.out.println("Tabla de frecuencia de viento:");
-        for (i = 0; i < 2; i++) {
-            for (j = 0; j < 2; j++) {
-                System.out.printf("%f ", matrizFrecuenciaViento[i][j]);
-            }
-            System.out.print("\n");
-        }
-
-        // Calculo de las condicionales segun los parametros ingresados por el usuario
-        // Luvia-temperatura- viento - se jugo?
-        double condicionalSi = calculoProbabilidadCondicional(paramCielo, paramTemp, paramViento, paramHumedad, "Si",
-                probabilidadJugar, matrizFrecuenciaCielo, matrizFrecuenciaHumendad, matrizFrecuenciaTemperatura,
-                matrizFrecuenciaViento);
-
-        double condicionalNo = calculoProbabilidadCondicional(paramCielo, paramTemp, paramViento, paramHumedad, "No",
-                probabilidadNoJugar, matrizFrecuenciaCielo, matrizFrecuenciaHumendad, matrizFrecuenciaTemperatura,
-                matrizFrecuenciaViento);
-
+        // -----No se juega-----
         
+        //Cielo
+        matrizFrecuenciaNo[0][0] = contadorSoleadoNo;
+        matrizFrecuenciaNo[1][0] = contadorNubladoNo;
+        matrizFrecuenciaNo[2][0] = contadorLluviosNo;
 
-        double ProbabilidadFinalJugar= condicionalSi/(condicionalSi+condicionalNo);
-        double ProbabilidadFinalNoJugar= condicionalNo/(condicionalSi+condicionalNo);
+        //Temperatura
+        matrizFrecuenciaNo[0][1] = contadorCalorNo;
+        matrizFrecuenciaNo[1][1] = contadorTempladoNo;
+        matrizFrecuenciaNo[2][1] = contadorFrioNo;
 
-        System.out.printf("* La probabilidad final de que si se juege es de: %f(%f%%) \n",ProbabilidadFinalJugar,ProbabilidadFinalJugar*100);
-        System.out.printf("* La probabilidad final de que no se juege es de: %f(%f%%) \n",ProbabilidadFinalNoJugar,ProbabilidadFinalNoJugar*100);
+        //Humedad
+        matrizFrecuenciaNo[0][2] = contadorAltaNo;
+        matrizFrecuenciaNo[1][2] = contadorNormalNo;
 
-        if(ProbabilidadFinalJugar>ProbabilidadFinalNoJugar){
-            System.out.println("****El partido se juega****");
-        }else if(ProbabilidadFinalJugar<ProbabilidadFinalNoJugar){
-            System.out.println("****El partido no se juega****");
-        }else{
-            System.out.println("****La probabilidad de que se juegue o no es la misma****");
-        } */
+        //Viento
+        matrizFrecuenciaNo[0][3] = contadorHayVientoNo;
+        matrizFrecuenciaNo[1][3] = contadorNoHayVientoNo;
+      
+        System.out.println("Tabla de frecuencia de no se juega:");
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                System.out.printf("%f ", matrizFrecuenciaNo[i][j]);
+            }
+            System.out.print("\n");
+        }
+
+        /*Comprobar si las matrices tienen algun valor 0
+        en caso que alguna tenga un valor 0 se debe normalizar la matriz*/
 
 
 
@@ -323,95 +306,20 @@ public class golfJava {
         return cantidadSi;
     }
 
-    /// Funcion que calcula la probabilidad condicional
-    /// Se ingresan los parametros a evaluar que son los ingresados por el usuario
-    /// Depende de cada paramatro se analiza una u otra columna de las matrices
-    /// A cada combinacion de fila y columna de las matrices de frecuencia le
-    /// corresponde un numero distinto
-    public static double calculoProbabilidadCondicional(String cielo, String temperatura, String viento, String humedad,
-            String sejugo, double valorSejugo, double[][] matrizFrecuenciaCielo, double[][] matrizFrecuenciaHumendad,
-            double[][] matrizFrecuenciaTemperatura, double[][] matrizFrecuenciaViento) {
+    public static boolean encontrarValorCero(double[][] matrizObjetivo){
+        int row, colum;
 
-        double cieloValor = 0.0;
-        double tempValor = 0.0;
-        double humedadValor = 0.0;
-        double vientoValor = 0.0;
-        double resultado = 0.0;
-
-        // Valores que tendran las filas de las tablas de frecuencia
-        int filaCielo, filaHumedad, filaTemperatura, filaViento;
-
-        // Dependiendo si es si o no debo analizar una u otra columna(0=Si , 1=No) de la
-        // matriz de frecuencia
-        int ValorColumna = sejugo.equals("Si") ? 0 : 1;
-
-        // Fila para el cielo según los parametros ingresados
-        switch (cielo) {
-            case "Soleado":
-                filaCielo = 0;
-                break;
-
-            case "Nublado":
-                filaCielo = 1;
-                break;
-
-            case "Lluvia":
-                filaCielo = 2;
-                break;
-
-            default:
-                filaCielo = 0;
+        for(row = 0;row < matrizObjetivo.length; row++ ){
+            for(colum = 0;colum < matrizObjetivo[row].length; colum++){
+                
+            }
         }
+        
+        return false;
 
-        switch (humedad) {
-            case "Alta":
-                filaHumedad = 0;
-                break;
-
-            case "Normal":
-                filaHumedad = 1;
-                break;
-
-            default:
-                filaHumedad = 0;
-        }
-
-        switch (temperatura) {
-            case "Calor":
-                filaTemperatura = 0;
-                break;
-
-            case "Templado":
-                filaTemperatura = 1;
-                break;
-
-            case "Frio":
-                filaTemperatura = 2;
-                break;
-
-            default:
-                filaTemperatura = 0;
-        }
-
-        switch (viento) {
-            case "Si":
-                filaViento = 0;
-                break;
-
-            case "No":
-                filaViento = 1;
-                break;
-
-            default:
-                filaViento = 0;
-        }
-
-        // Calculo de la ecuacion
-        resultado = matrizFrecuenciaCielo[filaCielo][ValorColumna] * matrizFrecuenciaHumendad[filaHumedad][ValorColumna]
-                * matrizFrecuenciaTemperatura[filaTemperatura][ValorColumna]
-                * matrizFrecuenciaViento[filaViento][ValorColumna] * valorSejugo;
-
-        return resultado;
     }
+
+
+    
 
 }
