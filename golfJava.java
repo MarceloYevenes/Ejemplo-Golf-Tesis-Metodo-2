@@ -256,6 +256,7 @@ public class golfJava {
         matrizFrecuenciaSi[0][3] = contadorHayVientoSi; 
         matrizFrecuenciaSi[1][3] = contadorNoHayVientoSi; 
 
+        System.out.println("------------------------------------------");
         System.out.println("Tabla de frecuencia de si se juega:");
         for (i = 0; i < 3; i++) {
             for (j = 0; j < 4; j++) {
@@ -284,6 +285,7 @@ public class golfJava {
         matrizFrecuenciaNo[0][3] = contadorHayVientoNo;
         matrizFrecuenciaNo[1][3] = contadorNoHayVientoNo;
       
+        System.out.println("------------------------------------------");
         System.out.println("Tabla de frecuencia de no se juega:");
         for (i = 0; i < 3; i++) {
             for (j = 0; j < 4; j++) {
@@ -299,6 +301,7 @@ public class golfJava {
         
         //Se deben normalizar las matrices de frecuencia si se encuentra un 0;
         if(valorCeroSiJuega){
+            System.out.println("------------------------------------------");
             System.out.println("Matriz normalizada para si se juega");
             for (i = 0; i < 3; i++) {
                 for (j = 0; j < 4; j++) {
@@ -308,8 +311,9 @@ public class golfJava {
                 System.out.print("\n");
             }
         }
-
+   
         if(valorCeroNoJuega){
+            System.out.println("------------------------------------------");
             System.out.println("Matriz normalizada para no se juega");
             for (i = 0; i < 3; i++) {
                 for (j = 0; j < 4; j++) {
@@ -326,6 +330,7 @@ public class golfJava {
         double sumColMatrizSi = sumColumnas(matrizFrecuenciaSi);  
         double sumColMatrizNo = sumColumnas(matrizFrecuenciaNo);
 
+        System.out.println("------------------------------------------");
         //Matriz de probabilida para si
         System.out.println("Matriz de probabilidad para si se juega");
         for (i = 0; i < 3; i++) {
@@ -336,6 +341,7 @@ public class golfJava {
             System.out.print("\n");
         }
 
+        System.out.println("------------------------------------------");
         //Matriz de probabilida para no
         System.out.println("Matriz de probabilidad para no se juega");
         for (i = 0; i < 3; i++) {
@@ -358,11 +364,17 @@ public class golfJava {
         double probabilidadFinalSiJuega = ((factorSiJuega)/(factorSiJuega + factorNoJuega))*100; 
         double probabilidadFinalNoJuega = ((factorNoJuega)/(factorSiJuega + factorNoJuega))*100; 
 
-        System.out.printf("Probabilida que si se juega %f \n",probabilidadFinalSiJuega);
-        System.out.printf("Probabilida que no se juega %f \n",probabilidadFinalNoJuega);
+        System.out.println("------------------------------------------");
+        System.out.printf("Probabilida que si se juegue el partido %f porciento \n",probabilidadFinalSiJuega);
+        System.out.printf("Probabilida que no se juegue el partido %f porciento \n",probabilidadFinalNoJuega);
 
         //Comparar y entregar el resultado final
-        
+        if(probabilidadFinalSiJuega > probabilidadFinalNoJuega){
+            System.out.println("Finalmente, el partido se juega");
+        }else{
+            System.out.println("Finalmente, el partido no se juega");
+        }
+
 
     
     }
