@@ -204,7 +204,7 @@ public class golfJava {
             }
 
             // Frio - No se juega
-            if (matrizValores[i][1] == (3) && matrizValores[i][4] == (2)) {
+            if(matrizValores[i][1] == (3) && matrizValores[i][4] == (2)) {
                 contadorFrioNo++;
             }
 
@@ -228,7 +228,7 @@ public class golfJava {
             }
 
             // No hay viento - No se juega
-            if (matrizValores[i][3] == (2) && matrizValores[i][4] == (2)) {
+            if (matrizValores[i][3] == (3) && matrizValores[i][4] == (2)) {
                 contadorNoHayVientoNo++;
             }
 
@@ -320,7 +320,6 @@ public class golfJava {
             }
         }
 
-
         /*Se debe obtener la suma de una columna de ambas matrices para
         obtener la probabilidades respectivas para cada evento*/
 
@@ -337,7 +336,6 @@ public class golfJava {
             System.out.print("\n");
         }
 
-
         //Matriz de probabilida para no
         System.out.println("Matriz de probabilidad para no se juega");
         for (i = 0; i < 3; i++) {
@@ -348,10 +346,25 @@ public class golfJava {
             System.out.print("\n");
         }
 
+        //Determinar factor para si se juega
+        double factorSiJuega = determinarFactorProbabilidad(paramCielo, paramTemp, 
+        paramHumedad, paramViento, matrizProbabilidadSi, probabilidadJugar);
+        
+        //Determinar facctor para no se juega
+        double factorNoJuega = determinarFactorProbabilidad(paramCielo, paramTemp, 
+        paramHumedad, paramViento, matrizProbabilidadNo, probabilidadJugar);
+
+        //Obtener la probabilidades respectivas
+        double probabilidadFinalSiJuega = ((factorSiJuega)/(factorSiJuega + factorNoJuega))*100; 
+        double probabilidadFinalNoJuega = ((factorNoJuega)/(factorSiJuega + factorNoJuega))*100; 
+
+        System.out.printf("Probabilida que si se juega %f \n",probabilidadFinalSiJuega);
+        System.out.printf("Probabilida que no se juega %f \n",probabilidadFinalNoJuega);
+
+        //Comparar y entregar el resultado final
         
 
-
-
+    
     }
 
 
@@ -391,7 +404,19 @@ public class golfJava {
 
     }
 
+    public static double determinarFactorProbabilidad(int paramCielo, int paramTemp, 
+    int paramHumedad, int paramViento, double [][]matrizObjetivo, double probTotal){
 
-    
+        double totalFactor;
+
+        double probCielo = matrizObjetivo[paramCielo-1][0];
+        double probTemp = matrizObjetivo[paramTemp-1][1];
+        double probHumedad = matrizObjetivo[paramHumedad-1][2];
+        double probViento = matrizObjetivo[paramViento-1][3];
+
+        totalFactor = probCielo*probTemp*probHumedad*probViento*probTotal;
+        return totalFactor;
+    }    
+
 
 }
