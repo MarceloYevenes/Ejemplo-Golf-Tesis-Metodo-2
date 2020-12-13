@@ -7,6 +7,10 @@
 
 Nota: El código puede ser abierto con algún IDE que soporte el lenguaje, en este caso fue ejecutado con la terminal de ubuntu
 
+### Cambios
+
+El código varía en su versión anterior en que en este caso los parametros son representados con números y se les agrega normalización.
+
 ### Edición de párametros
 
 Para buscar la probabilidad de que ocurra otro evento simplemente se deben modificar los párametros ubicados en la lineas 27 a 30,
