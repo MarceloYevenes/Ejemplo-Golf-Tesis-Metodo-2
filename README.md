@@ -13,7 +13,7 @@ El código varía en su versión anterior en que en este caso los parametros son
 
 ### Edición de párametros
 
-Para buscar la probabilidad de que ocurra otro evento simplemente se deben modificar los párametros ubicados en la lineas 27 a 30,
+Para buscar la probabilidad de que ocurra otro evento simplemente se deben modificar los párametros ubicados en la lineas 37 a 41,
 en donde las varaibles son: 
 
 * paramCielo
